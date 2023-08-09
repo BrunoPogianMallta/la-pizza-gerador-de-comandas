@@ -1,0 +1,157 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+#cabecalho-pizzaria {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 999; /* Garante que o cabeçalho fique acima do conteúdo rolável */
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+#select-size {
+    text-align: center;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* display: none; */
+}
+#select-size h2{
+    font-size: 35px;
+}
+
+#pizzas-tamanho {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.pizza-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    height: auto;
+    border: none;
+    background: none;
+    padding: 20px;
+    margin: 0;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s; /* Adicionando transições suaves */
+    cursor: pointer;
+    
+}
+
+.pizza-btn:hover {
+    transform: scale(1.1); /* Efeito de aumento de tamanho no hover */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pizza-img {
+    height: auto;
+    width: 80px;
+}
+
+.pizza-text {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+#popout {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+#popout-gerar-comanda {
+    display: none;
+    font-weight: bold;
+    padding: 0 20px;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+   
+}
+#popout-gerar-comanda button {
+    font-weight: bold;
+    max-width: 180px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+}
+
+.popout-category {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.popout-category button {
+    font-weight: bold;
+    max-width: 180px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+}
+
+.popout-category button:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
+    border-radius: 15px;
+    background-color: #f1f0f0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

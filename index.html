@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <title>Gerador de Comanda</title>
+</head>
+
+<body>
+    <header id="cabecalho-pizzaria">
+        <h2>La Pizza Gerador de Comandas</h2>
+    </header>
+    <div class="container">
+        <div id="select-size">
+            <h2>Selecione o Tamanho</h2>
+            <div id="pizzas-tamanho" class="pizza-buttons">
+                <button class="pizza-btn" id="broto">
+                    <p class="pizza-text">Broto</p>
+                    <img class="pizza-img" src="icon-pizza.png" alt="Pizza Broto">
+                </button>
+                <button class="pizza-btn" id="media">
+                    <p class="pizza-text">Media</p>
+                    <img class="pizza-img" src="icon-pizza.png" alt="Pizza Média">
+                </button>
+                <button class="pizza-btn" id="grande">
+                    <p class="pizza-text">Grande</p>
+                    <img class="pizza-img" src="icon-pizza.png" alt="Pizza Grande">
+                </button>
+                <button class="pizza-btn" id="big">
+                    <p class="pizza-text">Big</p>
+                    <img class="pizza-img" src="icon-pizza.png" alt="Pizza Big">
+                </button>
+            </div>
+        </div>
+
+        <div class="popout" id="popout">
+            <div class="popout-category" id="popout-category">
+                <h2>Escolha a Categoria</h2>
+                <button class="category-btn" id="tradicional">tradicionais</button>
+                <button class="category-btn" id="especial">Especiais</button>
+                <button class="category-btn" id="premium">Premium</button>
+                <button class="category-btn" id="doces">Doces</button>
+                <button class="voltar-btn">voltar</button>
+            </div>
+
+            <div class="popout-content" id="popout-gerar-comanda">
+                <h2>Escolha as opções para o tamanho <p></p>
+                    <ul id="categoria"></ul>
+                </h2>
+                <div>
+                    <label for="borda-recheada">Borda Recheada:</label>
+                    <select id="borda-recheada">
+                        <option value="sim">Sim</option>
+                        <option value="nao">Não</option>
+                    </select>
+                </div>
+                <button class="confirmar-btn">Confirmar</button>
+                <button id="voltar-bugado"class="voltar-btn">voltar</button>
+            </div>
+            <!-- Adicione os outros conteúdos do popout para os outros tamanhos aqui -->
+
+        </div>
+    </div>
+    <script type="module" src="index.js"></script>
+    <script type="module" src="cardapio.js"></script>
+</body>
+
+</html>

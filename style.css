@@ -2,9 +2,6 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -25,24 +22,29 @@ body, html {
     max-width: 1200px;
     padding: 0 20px;
     box-sizing: border-box;
+    margin: 0 auto; /* Centralizar o conteúdo */
 }
 
 #select-size {
+    margin-top: 80px;
     text-align: center;
-    padding: 40px;
+    padding: 20px; /* Reduzir o espaço em dispositivos móveis */
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     /* display: none; */
 }
-#select-size h2{
-    font-size: 35px;
+#select-size h2 {
+    font-size: 24px; /* Reduzir o tamanho da fonte em dispositivos móveis */
 }
 
 #pizzas-tamanho {
+    
     display: flex;
+    flex-wrap: wrap; /* Permitir que os botões de tamanho quebrem para a próxima linha */
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    padding: 10px 0; /* Reduzir o espaçamento em dispositivos móveis */
 }
 
 .pizza-btn {
@@ -54,35 +56,25 @@ body, html {
     height: auto;
     border: none;
     background: none;
-    padding: 20px;
-    margin: 0;
+    padding: 10px; /* Reduzir o espaçamento em dispositivos móveis */
+    margin: 10px 0; /* Adicionar margem vertical em dispositivos móveis */
     position: relative;
-    transition: transform 0.3s, box-shadow 0.3s; /* Adicionando transições suaves */
+    transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    
-}
-
-.pizza-btn:hover {
-    transform: scale(1.1); /* Efeito de aumento de tamanho no hover */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
-    border-radius: 15px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .pizza-img {
     height: auto;
-    width: 80px;
+    width: 60px; /* Reduzir o tamanho da imagem em dispositivos móveis */
 }
 
 .pizza-text {
-    margin-top: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
+    margin-top: 5px; /* Reduzir a margem superior em dispositivos móveis */
+    font-size: 14px; /* Reduzir o tamanho da fonte em dispositivos móveis */
 }
 
 #popout {
+    margin-top: 80px;
     width: 100%;
     max-width: 1200px;
     padding: 0 20px;
@@ -96,25 +88,24 @@ body, html {
 }
 
 #popout-gerar-comanda {
+    margin-top: 20px;
     display: none;
     font-weight: bold;
-    padding: 0 20px;
+    padding: 20px; /* Reduzir o espaçamento em dispositivos móveis */
     box-sizing: border-box;
     text-align: center;
-    padding: 30px;
     border-radius: 15px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-family: 'Roboto', sans-serif;
-   
 }
+
 #popout-gerar-comanda button {
     font-weight: bold;
     max-width: 180px;
-    padding: 0 20px;
+    padding: 10px;
     box-sizing: border-box;
     text-align: center;
-    padding: 30px;
     border-radius: 15px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -134,14 +125,12 @@ body, html {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
 .popout-category button {
     font-weight: bold;
     max-width: 180px;
-    padding: 0 10px;
+    padding: 10px;
     box-sizing: border-box;
     text-align: center;
-    padding: 10px;
     border-radius: 15px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -150,8 +139,29 @@ body, html {
 }
 
 .popout-category button:hover {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     background-color: #f1f0f0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    #pizzas-tamanho {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pizza-btn {
+        width: 100%;
+        max-width: 300px; /* Limitar a largura dos botões em dispositivos móveis */
+    }
+
+    .pizza-text {
+        font-size: 12px;
+    }
+
+    #popout-gerar-comanda button,
+    .popout-category button {
+        max-width: 100%;
+    }
 }

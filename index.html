@@ -43,12 +43,13 @@
                 <button class="category-btn" id="especial">Especiais</button>
                 <button class="category-btn" id="premium">Premium</button>
                 <button class="category-btn" id="doces">Doces</button>
-                <button class="voltar-btn">voltar</button>
+                <button class="voltar-btn"> <img src="voltar.png" ></button>
             </div>
 
             <div class="popout-content" id="popout-gerar-comanda">
-                <h2>Escolha as opções para o tamanho <p></p>
-                    <ul id="categoria"></ul>
+                <h2>Escolha a opção para o tamanho </h2>
+                <span id="selected-size"></span>:
+                <ul id="categoria"></ul>
                 </h2>
                 <div>
                     <label for="borda-recheada">Borda Recheada:</label>
@@ -57,12 +58,13 @@
                         <option value="nao">Não</option>
                     </select>
                 </div>
-                <button class="confirmar-btn">Confirmar</button>
-                <button id="voltar-bugado"class="voltar-btn">voltar</button>
+                <button class="confirmar-btn" >Confirmar</button>
+                <button id="voltar-bugado"class="voltar-btn"> <img src="./voltar.png" ></button>
             </div>
             <!-- Adicione os outros conteúdos do popout para os outros tamanhos aqui -->
 
         </div>
+        
     </div>
     <script type="module" src="index.js"></script>
     <script type="module" src="cardapio.js"></script>

@@ -2,6 +2,9 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -22,29 +25,24 @@ body, html {
     max-width: 1200px;
     padding: 0 20px;
     box-sizing: border-box;
-    margin: 0 auto; /* Centralizar o conteúdo */
 }
 
 #select-size {
-    margin-top: 80px;
     text-align: center;
-    padding: 20px; /* Reduzir o espaço em dispositivos móveis */
+    padding: 40px;
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     /* display: none; */
 }
-#select-size h2 {
-    font-size: 24px; /* Reduzir o tamanho da fonte em dispositivos móveis */
+#select-size h2{
+    font-size: 35px;
 }
 
 #pizzas-tamanho {
-    
     display: flex;
-    flex-wrap: wrap; /* Permitir que os botões de tamanho quebrem para a próxima linha */
     justify-content: space-between;
-    align-items: center;
-    padding: 10px 0; /* Reduzir o espaçamento em dispositivos móveis */
+    align-items: flex-start;
 }
 
 .pizza-btn {
@@ -56,25 +54,35 @@ body, html {
     height: auto;
     border: none;
     background: none;
-    padding: 10px; /* Reduzir o espaçamento em dispositivos móveis */
-    margin: 10px 0; /* Adicionar margem vertical em dispositivos móveis */
+    padding: 20px;
+    margin: 0;
     position: relative;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s; /* Adicionando transições suaves */
     cursor: pointer;
+    
+}
+
+.pizza-btn:hover {
+    transform: scale(1.1); /* Efeito de aumento de tamanho no hover */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .pizza-img {
     height: auto;
-    width: 60px; /* Reduzir o tamanho da imagem em dispositivos móveis */
+    width: 80px;
 }
 
 .pizza-text {
-    margin-top: 5px; /* Reduzir a margem superior em dispositivos móveis */
-    font-size: 14px; /* Reduzir o tamanho da fonte em dispositivos móveis */
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
 }
 
 #popout {
-    margin-top: 80px;
     width: 100%;
     max-width: 1200px;
     padding: 0 20px;
@@ -88,24 +96,25 @@ body, html {
 }
 
 #popout-gerar-comanda {
-    margin-top: 20px;
     display: none;
     font-weight: bold;
-    padding: 20px; /* Reduzir o espaçamento em dispositivos móveis */
+    padding: 0 20px;
     box-sizing: border-box;
     text-align: center;
+    padding: 30px;
     border-radius: 15px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-family: 'Roboto', sans-serif;
+   
 }
-
 #popout-gerar-comanda button {
     font-weight: bold;
     max-width: 180px;
-    padding: 10px;
+    padding: 0 20px;
     box-sizing: border-box;
     text-align: center;
+    padding: 30px;
     border-radius: 15px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -114,6 +123,7 @@ body, html {
 }
 
 .popout-category {
+    margin-top: 20px;
     width: 100%;
     max-width: 1200px;
     padding: 0 20px;
@@ -125,12 +135,14 @@ body, html {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+
 .popout-category button {
     font-weight: bold;
     max-width: 180px;
-    padding: 10px;
+    padding: 0 10px;
     box-sizing: border-box;
     text-align: center;
+    padding: 10px;
     border-radius: 15px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -139,29 +151,203 @@ body, html {
 }
 
 .popout-category button:hover {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
     border-radius: 15px;
     background-color: #f1f0f0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 768px) {
-    #pizzas-tamanho {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .pizza-btn {
-        width: 100%;
-        max-width: 300px; /* Limitar a largura dos botões em dispositivos móveis */
-    }
-
-    .pizza-text {
-        font-size: 12px;
-    }
-
-    #popout-gerar-comanda button,
-    .popout-category button {
-        max-width: 100%;
-    }
+.voltar-btn {
+    width: 80px;
+    position: relative; /* Adicione position relative ao botão */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px; /* Ajuste a margem superior conforme necessário */
 }
+
+.voltar-btn img {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px; /* Adicione um espaçamento entre o ícone e o texto */
+}
+
+.voltar-btn span {
+    font-weight: bold;
+    font-size: 14px; /* Ajuste o tamanho da fonte conforme necessário */
+}
+
+.voltar-btn::before {
+    content: "Voltar"; /* Adicione o texto "Voltar" */
+    position: absolute;
+    top: -25px; /* Ajuste a posição vertical conforme necessário */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px; /* Ajuste o tamanho da fonte conforme necessário */
+    opacity: 0; /* Inicialmente, o texto estará oculto */
+    pointer-events: none; /* Garante que o texto não afete a interação */
+    transition: opacity 0.2s; /* Adicione uma transição para suavizar a exibição */
+}
+.confirmar-btn::before {
+    content: "Confirmar"; /* Adicione o texto "Voltar" */
+    position: absolute;
+    top: -25px; /* Ajuste a posição vertical conforme necessário */
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 12px; /* Ajuste o tamanho da fonte conforme necessário */
+    opacity: 0; /* Inicialmente, o texto estará oculto */
+    pointer-events: none; /* Garante que o texto não afete a interação */
+    transition: opacity 0.3s; /* Adicione uma transição para suavizar a exibição */
+}
+.voltar-btn:hover {
+    background-color: #f1f0f0; /* Mude a cor de fundo ao passar o mouse */
+    border-radius: 15px;
+}
+.confirmar-btn:hover::before {
+    opacity: 1; /* Mostra o texto "Voltar" ao passar o mouse */
+}
+.voltar-btn:hover::before {
+    opacity: 1; /* Mostra o texto "Voltar" ao passar o mouse */
+}
+
+
+
+#popout-gerar-comanda button:hover {
+    background-color: #e0e0e0; /* Mude a cor de fundo ao passar o mouse */
+}
+
+
+
+.confirmar-btn {
+    width: 80px;
+    position: relative; /* Adicione position relative ao botão */
+    display: flex;
+    float: right;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px; /* Ajuste a margem superior conforme necessário */
+}
+
+.category-btn {
+    flex-wrap: wrap;
+    width: 100px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.popout-category {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px; /* Ajuste o espaçamento interno */
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap; /* Adicione flex-wrap para que as categorias quebrem para a próxima linha */
+    justify-content: space-between;
+    align-items: center; /* Alinhe verticalmente as categorias */
+    gap: 20px; /* Adicione espaçamento entre as categorias */
+}
+
+#categoria {
+    list-style: none;
+    padding: 0;
+}
+
+.pizza-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.pizza-id {
+    font-weight: bold;
+    font-size: 16px;
+    width: 40px;
+    text-align: center;
+}
+
+.pizza-sabor {
+    font-size: 16px;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+#categoria {
+    max-height: 400px; /* Defina a altura máxima desejada */
+    overflow-y: scroll;
+   
+}
+
+::-webkit-scrollbar {
+    width:10px;
+    height: 10px;
+    }
+
+    /* Estilo para os cabeçalhos das categorias */
+.pizza-category-header {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Estilo para cada item da lista de pizzas */
+.pizza-list-item {
+    margin: 8px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pizza-list-item-num {
+    font-weight: bold;
+}
+
+.pizza-list-item-sabor {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.num-sabor-header {
+    margin-top: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.pizza-list-item.selected {
+    background-color: #f0f0f0; /* Cor de fundo para destacar */
+    border: 2px solid #007bff; /* Borda para realçar */
+    cursor: pointer; /* Mostrar cursor ao passar por cima */
+  }
+  .pizza-list-item:hover{
+    border: 2px solid #007bff; /* Borda para realçar */
+    cursor: pointer; /* Mostrar cursor ao passar por cima */
+  }
+  
+  /* Estilos para o cabeçalho da categoria */
+  .pizza-category-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para os números dos itens */
+  .pizza-list-item-num {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  /* Estilos para os sabores dos itens */
+  .pizza-list-item-sabor {
+    font-size: 16px;
+  }

@@ -17,7 +17,7 @@ body, html {
     padding: 10px 0;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 999; /* Garante que o cabeçalho fique acima do conteúdo rolável */
+    z-index: 999;
 }
 
 .container {
@@ -33,10 +33,6 @@ body, html {
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* display: none; */
-}
-#select-size h2{
-    font-size: 35px;
 }
 
 #pizzas-tamanho {
@@ -57,14 +53,13 @@ body, html {
     padding: 20px;
     margin: 0;
     position: relative;
-    transition: transform 0.3s, box-shadow 0.3s; /* Adicionando transições suaves */
+    transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    
 }
 
 .pizza-btn:hover {
-    transform: scale(1.1); /* Efeito de aumento de tamanho no hover */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -106,8 +101,8 @@ body, html {
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-family: 'Roboto', sans-serif;
-   
 }
+
 #popout-gerar-comanda button {
     font-weight: bold;
     max-width: 180px;
@@ -135,7 +130,6 @@ body, html {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
 .popout-category button {
     font-weight: bold;
     max-width: 180px;
@@ -151,7 +145,7 @@ body, html {
 }
 
 .popout-category button:hover {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     background-color: #f1f0f0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -159,73 +153,73 @@ body, html {
 
 .voltar-btn {
     width: 80px;
-    position: relative; /* Adicione position relative ao botão */
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 30px; /* Ajuste a margem superior conforme necessário */
+    margin-top: 30px;
 }
 
 .voltar-btn img {
     width: 15px;
     height: 15px;
-    margin-right: 5px; /* Adicione um espaçamento entre o ícone e o texto */
+    margin-right: 5px;
 }
 
 .voltar-btn span {
     font-weight: bold;
-    font-size: 14px; /* Ajuste o tamanho da fonte conforme necessário */
+    font-size: 14px;
 }
 
 .voltar-btn::before {
-    content: "Voltar"; /* Adicione o texto "Voltar" */
+    content: "Voltar";
     position: absolute;
-    top: -25px; /* Ajuste a posição vertical conforme necessário */
+    top: -25px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 12px; /* Ajuste o tamanho da fonte conforme necessário */
-    opacity: 0; /* Inicialmente, o texto estará oculto */
-    pointer-events: none; /* Garante que o texto não afete a interação */
-    transition: opacity 0.2s; /* Adicione uma transição para suavizar a exibição */
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
 }
+
 .confirmar-btn::before {
-    content: "Confirmar"; /* Adicione o texto "Voltar" */
+    content: "Confirmar";
     position: absolute;
-    top: -25px; /* Ajuste a posição vertical conforme necessário */
+    top: -25px;
     right: 50%;
     transform: translateX(50%);
-    font-size: 12px; /* Ajuste o tamanho da fonte conforme necessário */
-    opacity: 0; /* Inicialmente, o texto estará oculto */
-    pointer-events: none; /* Garante que o texto não afete a interação */
-    transition: opacity 0.3s; /* Adicione uma transição para suavizar a exibição */
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
 }
+
 .voltar-btn:hover {
-    background-color: #f1f0f0; /* Mude a cor de fundo ao passar o mouse */
+    background-color: #f1f0f0;
     border-radius: 15px;
 }
+
 .confirmar-btn:hover::before {
-    opacity: 1; /* Mostra o texto "Voltar" ao passar o mouse */
+    opacity: 1;
 }
+
 .voltar-btn:hover::before {
-    opacity: 1; /* Mostra o texto "Voltar" ao passar o mouse */
+    opacity: 1;
 }
-
-
 
 #popout-gerar-comanda button:hover {
-    background-color: #e0e0e0; /* Mude a cor de fundo ao passar o mouse */
+    background-color: #e0e0e0;
 }
-
-
 
 .confirmar-btn {
     width: 80px;
-    position: relative; /* Adicione position relative ao botão */
+    position: relative;
     display: flex;
     float: right;
     align-items: center;
     justify-content: center;
-    margin-top: 30px; /* Ajuste a margem superior conforme necessário */
+    margin-top: 30px;
 }
 
 .category-btn {
@@ -238,63 +232,34 @@ body, html {
 .popout-category {
     width: 100%;
     max-width: 1200px;
-    padding: 20px; /* Ajuste o espaçamento interno */
+    padding: 20px;
     box-sizing: border-box;
     text-align: center;
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-wrap: wrap; /* Adicione flex-wrap para que as categorias quebrem para a próxima linha */
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center; /* Alinhe verticalmente as categorias */
-    gap: 20px; /* Adicione espaçamento entre as categorias */
-}
-
-#categoria {
-    list-style: none;
-    padding: 0;
-}
-
-.pizza-item {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.pizza-id {
-    font-weight: bold;
-    font-size: 16px;
-    width: 40px;
-    text-align: center;
-}
-
-.pizza-sabor {
-    font-size: 16px;
-    flex-grow: 1;
-    margin-left: 10px;
+    gap: 20px;
 }
 
 #categoria {
-    max-height: 400px; /* Defina a altura máxima desejada */
+    max-height: 400px;
     overflow-y: scroll;
-   
 }
 
 ::-webkit-scrollbar {
-    width:10px;
+    width: 10px;
     height: 10px;
-    }
+}
 
-    /* Estilo para os cabeçalhos das categorias */
 .pizza-category-header {
     font-weight: bold;
     margin-top: 20px;
 }
 
-/* Estilo para cada item da lista de pizzas */
 .pizza-list-item {
     margin: 8px 0;
     padding: 5px;
@@ -324,30 +289,292 @@ body, html {
 }
 
 .pizza-list-item.selected {
-    background-color: #f0f0f0; /* Cor de fundo para destacar */
-    border: 2px solid #007bff; /* Borda para realçar */
-    cursor: pointer; /* Mostrar cursor ao passar por cima */
-  }
-  .pizza-list-item:hover{
-    border: 2px solid #007bff; /* Borda para realçar */
-    cursor: pointer; /* Mostrar cursor ao passar por cima */
-  }
-  
-  /* Estilos para o cabeçalho da categoria */
-  .pizza-category-header {
+    background-color: #f0f0f0;
+    border: 2px solid #007bff;
+    cursor: pointer;
+}
+
+.pizza-list-item:hover {
+    border: 2px solid #007bff;
+    cursor: pointer;
+}
+
+.pizza-category-header {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
-  }
-  
-  /* Estilos para os números dos itens */
-  .pizza-list-item-num {
+}
+
+.pizza-list-item-num {
     font-size: 16px;
     font-weight: bold;
     margin-right: 10px;
-  }
-  
-  /* Estilos para os sabores dos itens */
-  .pizza-list-item-sabor {
+}
+
+.pizza-list-item-sabor {
     font-size: 16px;
-  }
+}
+
+#sabores-selecionados {
+    font-weight: bold;
+    color: green;
+    margin-top: 10px;
+}
+
+#selected-size {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.pizza-category-header {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#sabores-selecionados span {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#sabores-selecionados span:hover {
+    background-color: green;
+    color: #ffffff;
+}
+
+.pizza-list-item.selected .pizza-list-item-sabor {
+    background-color: lightgreen;
+}
+
+.pizza-category-header {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .pizza-btn {
+        padding: 10px;
+    }
+
+    #pizzas-tamanho {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .voltar-btn,
+    .confirmar-btn {
+        width: 100%;
+        max-width: 200px;
+        margin-top: 10px;
+    }
+
+    .sabores-selecionados-container {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .sabor-selecionado {
+        display: inline-block;
+        padding: 5px 10px;
+        border: 1px solid black;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
+
+    .popout-category {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.botoes-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 10px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+/* Estilo para o modal de sabores de borda recheada */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Estilo para os botões de sabores de borda recheada */
+.borda-recheada-btn {
+    background-color: #007bff;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.borda-recheada-btn:hover {
+    background-color: #0056b3;
+}
+
+.pedido-sidebar {
+    position: fixed;
+    top: 0;
+    left: -500px; /* Posicione a barra lateral à esquerda */
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Ajuste a sombra para a direita */
+    padding: 20px;
+    transition: left 0.3s ease-in-out; /* Ajuste a transição para a esquerda */
+    z-index: 9999;
+}
+
+.pedido-sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Estilos para o botão de abrir a janela lateral */
+#open-pedido-sidebar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+/* Estilos para a barra lateral do pedido */
+#pedido-sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    transition: right 0.3s ease-in-out;
+}
+
+#pedido-sidebar h2 {
+    margin-bottom: 10px;
+}
+
+#pedido-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#pedido-sidebar p {
+    margin: 10px 0;
+}
+
+/* Alinhar o campo de observação */
+#observacao {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+/* Alinhar a descrição do campo */
+#pedido-sidebar label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+
+#finalizar-pedido-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para o botão "Ver Pedido" */
+#open-pedido-sidebar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    z-index: 1000;
+    font-size: 14px;
+    height: 50px;
+    line-height: 1;
+}
+
+#open-pedido-sidebar:hover {
+    background-color: #0056b3;
+}
+#finalizar-pedido-btn {
+    max-height: 50px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    /* padding: 0 12px; Ajuste o padding para controlar a altura */
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    /* align-self: flex-end; */
+    text-align: center;
+    font-size: 14px;
+}
+
+#salvar-pizza-btn {
+    max-height: 50px;
+    background-color: #0ece0e;
+    color: #fff;
+    border: none;
+    /* padding: 0 12px; Ajuste o padding para controlar a altura */
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    /* align-self: flex-end; */
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+}

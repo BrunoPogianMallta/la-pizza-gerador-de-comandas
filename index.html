@@ -13,6 +13,10 @@
     <header id="cabecalho-pizzaria">
         <h2>La Pizza Gerador de Comandas</h2>
     </header>
+    <div id="pizzas-salvas">
+        <h2>Pizzas Salvas:</h2>
+        <ul id="pizzas-salvas-list"></ul>
+    </div>
     <div class="container">
         <div id="select-size">
             <h2>Selecione o Tamanho</h2>
@@ -35,6 +39,7 @@
                 </button>
             </div>
         </div>
+        
 
         <div class="popout" id="popout">
             <div class="popout-category" id="popout-category">
@@ -48,26 +53,74 @@
 
             <div class="popout-content" id="popout-gerar-comanda">
                 <h2>Escolha a opção para o tamanho </h2>
-                <span id="selected-size"></span>:
+                <span id="selected-size"></span>
                 <ul id="categoria"></ul>
-                </h2>
+                <!-- modal para escolher borda -->
                 <div>
-                    <label for="borda-recheada">Borda Recheada:</label>
-                    <select id="borda-recheada">
-                        <option value="sim">Sim</option>
-                        <option value="nao">Não</option>
-                    </select>
+                    <button id="borda-recheada-btn" class="action-btn borda-recheada-btn">Borda Recheada</button>
+                    <p id="sabores-selecionados"><span></span></p>
                 </div>
-                <button class="confirmar-btn" >Confirmar</button>
-                <button id="voltar-bugado"class="voltar-btn"> <img src="./voltar.png" ></button>
+                <div class="botoes-container">
+            
+                    <button id="voltar-bugado" class="action-btn voltar-btn"> <img src="./voltar.png" ></button>
+                </div>
             </div>
-            <!-- Adicione os outros conteúdos do popout para os outros tamanhos aqui -->
 
+            <div class="modal" id="bordaModal">
+                <div class="modal-content">
+                    <h2>Escolha o Sabor da Borda Recheada</h2>
+                    <div id="sabores-borda">
+                        <!-- Os botões de sabores de borda recheada serão adicionados aqui dinamicamente -->
+                    </div>
+                    <div class="botoes-container">
+                        
+                        <button id="voltar-borda" class="action-btn voltar-btn">Voltar</button>
+                    </div>
+                </div>
+            </div>
+            
         </div>
         
+        
     </div>
+    <div id="pizzas-salvas"></div>
+    <div id="pedido-sidebar" class="pedido-sidebar">
+        <button id="close-pedido-sidebar">Fechar</button>
+        <h2>Seu Pedido</h2>
+        <ul id="itens-pedido"></ul>
+        <div id="categoria-container"></div>
+        <!-- Número do Pedido -->
+    <p><strong>Número do Pedido:</strong> <span id="numero-pedido">1</span></p>
+
+    <!-- Tamanho da Pizza -->
+    <p><strong>Tamanho da Pizza:</strong> <span id="tamanho-pedido">-</span></p>
+
+    <!-- Categoria da Pizza -->
+    <p><strong>Categoria da Pizza:</strong> <span id="categoria-pedido">-</span></p>
+
+    <!-- Sabores da Pizza -->
+    <p><strong>Sabores da Pizza:</strong> <span id="sabores-pedido">-</span></p>
+
+    <!-- Borda da Pizza -->
+    <p><strong>Borda da Pizza:</strong> <span id="borda-pedido">Sem borda</span></p>
+        <label for="observacao">Observação:</label>
+        <textarea id="observacao" rows="4"></textarea>
+        <button id="salvar-pizza-btn" class="action-btn">Salvar Pizza</button>
+        <button id="finalizar-pedido-btn" class="action-btn">Finalizar Pedido</button>
+    </div>
+
+    
+
+    <button id="open-pedido-sidebar">Ver Pedido</button>
+    <div id="pedido-sidebar" class="pedido-sidebar">
+        <button id="close-pedido-sidebar">Fechar</button>
+        <h2>Seu Pedido</h2>
+        <ul id="itens-pedido"></ul>
+    </div>
+    
     <script type="module" src="index.js"></script>
     <script type="module" src="cardapio.js"></script>
+
 </body>
 
 </html>

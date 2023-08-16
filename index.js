@@ -476,7 +476,7 @@ function finalizarPedido() {
     const pedidoMaisRecente = pedido[pedido.length - 1];
 
     // Exibir o pedido criado no console
-    console.log('Pedido Criado:');
+    console.log('Pedido da Cozinha:');
     console.log('Tamanho:', pedidoMaisRecente.tamanho);
     console.log('Categoria:', pedidoMaisRecente.categoria);
     console.log('Sabores:', pedidoMaisRecente.sabores.join(', '));
@@ -498,12 +498,15 @@ function finalizarPedido() {
     pedidoSidebar.style.left = '-300px';
 }
 
+// Função para imprimir o pedido
 function imprimirPedido(tamanho, categoria, sabores, borda, detalhes, horario) {
+    const bordaParaImprimir = borda.length > 0 ? borda.map(sabor => capitalizeFirstLetter(sabor)).join(', ') : 'Sem borda';
+
     const pedidoParaImprimir = `
         Tamanho: ${capitalizeFirstLetter(tamanho)}
         Categoria: ${capitalizeFirstLetter(categoria)}
         Sabores: ${sabores.map(sabor => capitalizeFirstLetter(sabor)).join(', ')}
-        Borda: ${borda.map(sabor => capitalizeFirstLetter(sabor)).join(', ')}
+        Borda: ${bordaParaImprimir}
         Observação: ${detalhes}
         Horário: ${horario}
     `;
@@ -532,6 +535,7 @@ function imprimirPedido(tamanho, categoria, sabores, borda, detalhes, horario) {
     // Iniciar o processo de impressão
     printWindow.print();
 }
+
 
 function adicionarPizzaAoPedido(tamanho, categoria, sabores, borda, detalhes, horario) {
     pedido.push({

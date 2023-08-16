@@ -578,3 +578,9 @@ body, html {
     font-size: 14px;
     margin-bottom: 10px;
 }
+
+
+#pizzas-salvas{
+    display: none;
+    visibility: hidden;
+}

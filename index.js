@@ -115,6 +115,9 @@ function atualizarInformacoesPedido() {
         bordaPedidoElement.textContent = 'Sem borda';
     }
 }
+
+
+
 // Função para escolher o tamanho da pizza
 function escolherTamanhoDaPizza() {
     atualizarInformacoesPedido();
@@ -138,20 +141,9 @@ function escolherTamanhoDaPizza() {
             pedidoSidebar.style.left = '0'; // Mostrar a barra lateral do pedido
         });
     });
-
-    // const confirmarBtn = document.querySelector('.confirmar-btn');
-    // confirmarBtn.addEventListener('click', function() {
-    //     const selectedCategory = categoriaSelecionada !== '' ? capitalizeFirstLetter(categoriaSelecionada) : 'Categoria não selecionada';
-    //     gerarPedidoParaImpressao(tamanhoSelecionado, selectedCategory, saboresSelecionados);
-    // });
     
 }
-    // const confirmarBtn = document.querySelector('.confirmar-btn');
-    // confirmarBtn.addEventListener('click', function() {
-    //     const selectedCategory = categoriaSelecionada !== '' ? capitalizeFirstLetter(categoriaSelecionada) : 'Categoria não selecionada';
-    //     gerarPedidoParaImpressao(tamanhoSelecionado, selectedCategory, saboresSelecionados);
-        
-    // });
+    
 
 
 // Event listeners para os botões de categoria
@@ -236,9 +228,6 @@ function atualizarSaboresSelecionados() {
         saboresSelecionadosElement.innerHTML = 'Nenhum sabor selecionado.';
     }
 }
-
-let numeroPedidoAtual = 1; // Inicia o número do pedido a partir de 1
-
 
 
 // Função para gerar o pedido e disponibilizar para impressão
@@ -347,156 +336,6 @@ voltarBordaBtn.addEventListener('click', () => {
 // Estrutura de dados para armazenar as pizzas do pedido
 const pedido = [];
 
-// Função para exibir um popout de confirmação
-function exibirPopoutConfirmacao() {
-    const popoutConfirmacao = document.createElement('div');
-    popoutConfirmacao.classList.add('popout', 'popout-confirmacao');
-
-    const mensagem = document.createElement('p');
-    mensagem.textContent = 'Deseja adicionar outra pizza?';
-
-    const btnSim = document.createElement('button');
-    btnSim.classList.add('action-btn');
-    btnSim.textContent = 'Sim';
-
-    const btnNao = document.createElement('button');
-    btnNao.classList.add('action-btn');
-    btnNao.textContent = 'Não';
-
-    btnSim.addEventListener('click', () => {
-        popoutConfirmacao.remove(); // Remove o popout de confirmação
-        resetarSelecaoSabores(); // Reseta a seleção de sabores
-        exibirCategorias(); // Exibe as categorias novamente
-
-        // Redefinir informações na barra lateral
-        document.getElementById('tamanho-pedido').textContent = '-';
-        document.getElementById('categoria-pedido').textContent = '-';
-        document.getElementById('sabores-pedido').textContent = '-';
-        document.getElementById('borda-pedido').textContent = 'Sem borda';
-        
-        // Atualizar a lista de pizzas salvas
-        atualizarListaPizzasSalvas();
-    });
-    
-
-    btnNao.addEventListener('click', () => {
-        popoutConfirmacao.remove(); // Remove o popout de confirmação
-        finalizarPedido(); // Finaliza o pedido e exibe o resultado
-    });
-
-    popoutConfirmacao.appendChild(mensagem);
-    popoutConfirmacao.appendChild(btnSim);
-    popoutConfirmacao.appendChild(btnNao);
-
-    document.body.appendChild(popoutConfirmacao);
-}
-// Função para finalizar o pedido e imprimir
-function finalizarPedido() {
-    const horarioAtual = new Date().toLocaleTimeString(); // Defina o horário atual aqui
-    const detalhesDoPedido = observacaoInput.value || 'Sem detalhes';
-    adicionarPizzaAoPedido(tamanhoSelecionado, categoriaSelecionada, saboresSelecionados, saboresBorda, detalhesDoPedido, horarioAtual);
-
-    // Feche a barra lateral do pedido
-    pedidoSidebar.style.left = '-300px';
-
-    // Obter o pedido mais recente
-    const pedidoMaisRecente = pedido[pedido.length - 1];
-
-    // Exibir o pedido criado no console
-    console.log('Pedido Criado:');
-    console.log('Tamanho:', pedidoMaisRecente.tamanho);
-    console.log('Categoria:', pedidoMaisRecente.categoria);
-    console.log('Sabores:', pedidoMaisRecente.sabores.join(', '));
-    console.log('Borda:', pedidoMaisRecente.borda.join(', '));
-    console.log('Detalhes:', detalhesDoPedido);
-    console.log('Horário:', pedidoMaisRecente.horario);
-
-    // Gerar o pedido para impressão
-    gerarPedidoParaImpressao(
-        pedidoMaisRecente.tamanho,
-        pedidoMaisRecente.categoria,
-        pedidoMaisRecente.sabores,
-        pedidoMaisRecente.borda,
-        detalhesDoPedido,
-        pedidoMaisRecente.horario
-    );
-}
-function formatarDetalhesPedido(pedido) {
-    const proporcao = `1/${maxSabores[pedido.tamanho]}`;
-    const saboresPizza = pedido.sabores.filter(sabor => !saborBordaRecheada.includes(sabor));
-
-    let saboresPizzaTexto = '';
-
-    if (saboresPizza.length === 1) {
-        saboresPizzaTexto = `Sabor: ${saboresPizza[0]}`;
-    } else if (saboresPizza.length > 1) {
-        saboresPizzaTexto = `Sabores: ${saboresPizza.map(sabor => `${proporcao} ${sabor}`).join('<br>')}`;
-    }
-
-    return `
------ Seu pedido -----
-Número do pedido: ${pedido.numeroPedido}
-Tamanho da pizza: ${pedido.tamanho}
-Categoria: ${pedido.categoria}
-${saboresPizzaTexto}
-Borda Recheada: ${pedido.borda.join(', ')}
-Observação: ${pedido.detalhes}
-Horário do Pedido: ${pedido.horario}
----------------------
-`;
-}
-
-// Função para adicionar a pizza ao pedido
-// Função para adicionar a pizza ao pedido
-function adicionarPizzaAoPedido(tamanho, categoria, saboresSelecionados, bordaSelecionada, detalhes, horario) {
-    const pizza = {
-        tamanho: tamanho,
-        categoria: categoria,
-        sabores: saboresSelecionados,
-        borda: bordaSelecionada,
-        detalhes: detalhes, // Correção: adicionando os detalhes do pedido
-        horario: horario
-    };
-    pedido.push(pizza);
-
-    // Restaurar a lista de sabores de borda recheada
-    saboresBorda = [];
-
-    // Atualizar o número do pedido
-    const numeroPedidoElement = document.getElementById('numero-pedido');
-    if (numeroPedidoElement) {
-        numeroPedidoElement.textContent = pedido.length;
-    }
-
-    // Atualizar informações sobre sabores na barra lateral
-    const saboresPedidoElement = document.getElementById('sabores-pedido');
-    if (saboresPedidoElement) {
-        saboresPedidoElement.textContent = saboresSelecionados.join(', ');
-    }
-
-    // Atualizar informações sobre a borda na barra lateral
-    const bordaPedidoElement = document.getElementById('borda-pedido');
-    if (bordaPedidoElement) {
-        bordaPedidoElement.textContent = bordaSelecionada.length > 0 ? bordaSelecionada.join(', ') : 'Sem borda';
-    }
-
-    // Atualizar informações sobre os detalhes na barra lateral
-    const detalhesPedidoElement = document.getElementById('detalhes-pedido');
-    if (detalhesPedidoElement) {
-        detalhesPedidoElement.textContent = detalhes || 'Sem detalhes';
-    }
-
-    // Atualizar informações sobre a borda recheada na barra lateral
-    atualizarPedidoSidebar();
-
-    // Limpar seleções e atualizar interface
-    resetarSelecaoSabores();
-    atualizarSaboresSelecionados();
-    atualizarPedidoSidebar();
-    observacaoInput.value = ''; // Limpar a observação
-}
-
-
 const openPedidoSidebarBtn = document.getElementById('open-pedido-sidebar');
 const closePedidoSidebarBtn = document.getElementById('close-pedido-sidebar');
 const pedidoSidebar = document.getElementById('pedido-sidebar');
@@ -517,36 +356,6 @@ categoryButtons.forEach(button => {
         categoriaPedidoElement.textContent = capitalizeFirstLetter(categoriaSelecionada);
     });
 });
-let horarioAtual = '';
-//listner para finalizar pedido
-finalizarPedidoBtn.addEventListener('click', () => {
-    const detalhesDoPedido = observacaoInput.value || 'Sem detalhes';
-    const horarioAtual = new Date().toLocaleTimeString(); // Obter o horário atual
-    adicionarPizzaAoPedido(tamanhoSelecionado, categoriaSelecionada, saboresSelecionados, saboresBorda, detalhesDoPedido, horarioAtual);
-
-    // Exibir o pedido criado no console
-    console.log('Pedido Criado:');
-    console.log('Tamanho:', tamanhoSelecionado);
-    console.log('Categoria:', categoriaSelecionada);
-    console.log('Sabores:', saboresSelecionados.join(', '));
-    console.log('Borda:', saboresBorda.join(', '));
-    console.log('Detalhes:', detalhesDoPedido);
-    console.log('Horário:', horarioAtual);
-
-    // Gerar o pedido para impressão
-    gerarPedidoParaImpressao(
-        tamanhoSelecionado,
-        categoriaSelecionada,
-        saboresSelecionados,
-        saboresBorda,
-        detalhesDoPedido,
-        horarioAtual
-    );
-
-    // Evite que a barra lateral retraia
-    pedidoSidebar.style.left = '0';
-});
-
 
 // Event listener para abrir a barra lateral do pedido
 openPedidoSidebarBtn.addEventListener('click', () => {
@@ -649,63 +458,101 @@ document.addEventListener('DOMContentLoaded', () => {
     atualizarListaPizzasSalvas();
 });
 
+finalizarPedidoBtn.addEventListener('click',()=>{
+    finalizarPedido();
+})
 
-// Função para exibir o popout de confirmação após salvar uma pizza
-function exibirPopoutConfirmacaoAposSalvar() {
-    const popoutConfirmacao = document.createElement('div');
-    popoutConfirmacao.classList.add('popout', 'popout-confirmacao');
+// Função para finalizar o pedido
+function finalizarPedido() {
+    const detalhesDoPedido = observacaoInput.value || 'Sem detalhes';
 
-    btnSim.addEventListener('click', () => {
-        popoutConfirmacao.remove(); // Remove o popout de confirmação
-        resetarSelecaoSabores(); // Reseta a seleção de sabores
-        exibirCategorias(); // Exibe as categorias novamente
+    // Obter o horário atual do computador
+    const horarioAtual = new Date().toLocaleTimeString();
 
-        // Redefinir informações na barra lateral
-        document.getElementById('tamanho-pedido').textContent = '-';
-        document.getElementById('categoria-pedido').textContent = '-';
-        document.getElementById('sabores-pedido').textContent = '-';
-        document.getElementById('borda-pedido').textContent = 'Sem borda';
-        
-        // Atualizar a lista de pizzas salvas
-        atualizarListaPizzasSalvas();
-    });
-    
-    const mensagem = document.createElement('p');
-    mensagem.textContent = 'Pizza salva com sucesso! Deseja adicionar outra pizza?';
-    
-    const btnSim = document.createElement('button');
-    btnSim.classList.add('action-btn');
-    btnSim.textContent = 'Sim';
-    
-    const btnNao = document.createElement('button');
-    btnNao.classList.add('action-btn');
-    btnNao.textContent = 'Não';
-    
-    btnSim.addEventListener('click', () => {
-        popoutConfirmacao.remove(); // Remove o popout de confirmação
-        resetarSelecaoSabores(); // Reseta a seleção de sabores
-        exibirCategorias(); // Exibe as categorias novamente
+    // Gerar o pedido
+    adicionarPizzaAoPedido(tamanhoSelecionado, categoriaSelecionada, saboresSelecionados, saboresBorda, detalhesDoPedido, horarioAtual);
 
-        // Redefinir informações na barra lateral
-        document.getElementById('tamanho-pedido').textContent = '-';
-        document.getElementById('categoria-pedido').textContent = '-';
-        document.getElementById('sabores-pedido').textContent = '-';
-        document.getElementById('borda-pedido').textContent = 'Sem borda';
-    });
-    
-    btnNao.addEventListener('click', () => {
-        popoutConfirmacao.remove(); // Remove o popout de confirmação
-        finalizarPedido(); // Finaliza o pedido e exibe o resultado
-    });
-    
-    popoutConfirmacao.appendChild(mensagem);
-    popoutConfirmacao.appendChild(btnSim);
-    popoutConfirmacao.appendChild(btnNao);
-    
-    document.body.appendChild(popoutConfirmacao);
+    // Obter o pedido mais recente
+    const pedidoMaisRecente = pedido[pedido.length - 1];
+
+    // Exibir o pedido criado no console
+    console.log('Pedido Criado:');
+    console.log('Tamanho:', pedidoMaisRecente.tamanho);
+    console.log('Categoria:', pedidoMaisRecente.categoria);
+    console.log('Sabores:', pedidoMaisRecente.sabores.join(', '));
+    console.log('Borda:', pedidoMaisRecente.borda.join(', '));
+    console.log('Detalhes:', detalhesDoPedido);
+    console.log('Horário:', pedidoMaisRecente.horario);
+
+    // Gerar o pedido para impressão
+    imprimirPedido(
+        pedidoMaisRecente.tamanho,
+        pedidoMaisRecente.categoria,
+        pedidoMaisRecente.sabores,
+        pedidoMaisRecente.borda,
+        detalhesDoPedido,
+        pedidoMaisRecente.horario
+    );
+
+    // Fechar a barra lateral do pedido
+    pedidoSidebar.style.left = '-300px';
 }
 
+function imprimirPedido(tamanho, categoria, sabores, borda, detalhes, horario) {
+    const pedidoParaImprimir = `
+        Tamanho: ${capitalizeFirstLetter(tamanho)}
+        Categoria: ${capitalizeFirstLetter(categoria)}
+        Sabores: ${sabores.map(sabor => capitalizeFirstLetter(sabor)).join(', ')}
+        Borda: ${borda.map(sabor => capitalizeFirstLetter(sabor)).join(', ')}
+        Observação: ${detalhes}
+        Horário: ${horario}
+    `;
 
+    // Estilos CSS para o pedido impresso
+    const styles = `
+        <style>
+            body {
+                font-size: 18px; /* Tamanho da fonte */
+                line-height: 1.5; /* Espaçamento entre linhas */
+            }
+            pre {
+                font-family: monospace; /* Usar fonte monospace para manter a formatação */
+            }
+        </style>
+    `;
+
+    // Criar uma nova janela para impressão
+    const printWindow = window.open('', '_blank');
+
+    // Escrever os estilos e o conteúdo do pedido na janela de impressão
+    printWindow.document.write(styles);
+    printWindow.document.write(`<pre>${pedidoParaImprimir}</pre>`);
+    printWindow.document.close();
+
+    // Iniciar o processo de impressão
+    printWindow.print();
+}
+
+function adicionarPizzaAoPedido(tamanho, categoria, sabores, borda, detalhes, horario) {
+    pedido.push({
+        tamanho: tamanho,
+        categoria: categoria,
+        sabores: sabores,
+        borda: borda,
+        detalhes: detalhes,
+        horario: horario
+    });
+
+    // Atualizar a lista de pizzas salvas
+    pizzasSalvas.push({
+        tamanho: tamanho,
+        sabores: sabores,
+        borda: borda,
+        detalhes: detalhes,
+        horario: horario
+    });
+    atualizarListaPizzasSalvas();
+}
 
 
 // Iniciar a escolha do tamanho da pizza

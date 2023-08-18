@@ -130,24 +130,34 @@ body, html {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.popout-category button {
+.popout-category .category-btn {
     font-weight: bold;
     max-width: 180px;
     padding: 0 10px;
     box-sizing: border-box;
     text-align: center;
     padding: 10px;
-    border-radius: 15px;
+    background-color: #024c9b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+}
+.popout-category .voltar-btn{
     background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 60px;
+    width: 80px;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
 }
 
-.popout-category button:hover {
+.popout-category .category-btn:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    background-color: #f1f0f0;
+    background-color:#007bff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -291,12 +301,12 @@ body, html {
 
 .pizza-list-item.selected {
     background-color: #f0f0f0;
-    border: 2px solid #007bff;
+    border: 2px solid #024c9b;
     cursor: pointer;
 }
 
 .pizza-list-item:hover {
-    border: 2px solid #007bff;
+    border: 2px solid #024c9b;
     cursor: pointer;
 }
 
@@ -464,7 +474,7 @@ body, html {
 
 /* Estilo para os botões de sabores de borda recheada */
 .borda-recheada-btn {
-    background-color: #007bff;
+    background-color: #024c9b;
     color: #000000;
     border: none;
     padding: 10px 20px;
@@ -474,7 +484,7 @@ body, html {
 }
 
 .borda-recheada-btn:hover {
-    background-color: #0056b3;
+    background-color: #007bff;
 }
 
 .pizza-category-header{
@@ -561,7 +571,7 @@ body, html {
 
 
 #finalizar-pedido-btn:hover {
-    background-color: #0056b3;
+    background-color: #007bff;
 }
 
 /* Estilo para o botão "Ver Pedido" */
@@ -569,9 +579,11 @@ body, html {
     position: fixed;
     top: 20px;
     right: 20px;
-    background-color: #333;
+    cursor: pointer;
+    background-color: #024c9b;
     color: #fff;
     border: none;
+    border-radius: 6px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -580,16 +592,17 @@ body, html {
 }
 
 #open-pedido-sidebar:hover {
-    background-color: #0056b3;
+    background-color: #007bff;
 }
 #finalizar-pedido-btn {
     max-height: 50px;
-    background-color: #007bff;
+    background-color:#024c9b;
     color: #fff;
     border: none;
     cursor: pointer;
     text-align: center;
     font-size: 14px;
+    border-radius: 6px;
 }
 
 #salvar-pizza-btn {
@@ -611,7 +624,7 @@ body, html {
 }
 
 #close-pedido-sidebar {
-    background-color: #007bff;
+    background-color:#024c9b;
     color: #fff;
     border: none;
     padding: 8px 12px;
@@ -620,7 +633,21 @@ body, html {
     font-size: 14px;
     height: 50px;
     line-height: 1;
+    border-radius: 6px;
 }
+
+#close-pedido-sidebar:hover {
+    background-color:#007bff;
+}
+
+#borda-free{
+    cursor: pointer;
+    background-color: #024c9b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+}
+
 
 
 /* Responsividade */
@@ -678,11 +705,13 @@ body, html {
     }
     #open-pedido-sidebar{
         right: 50px;
+        border-radius: 6px;
     }
     #sabores-borda .action-btn {
         width: 80px;
         font-size: small;
         margin-top: 5px;
+        border-radius: 6px;
     } 
 
     .modal-content {

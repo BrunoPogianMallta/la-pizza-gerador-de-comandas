@@ -612,10 +612,20 @@ function adicionarPizzaAoPedido(tamanho, categoria, sabores, borda, detalhes, ho
         horario: horario 
     }
 }
-
+let bordaFree = false;
 //adicionar borda free
 bordaFreeBtn.addEventListener('click',()=>{
-    observacaoInput.innerHTML = 'BORDA FREE**'
+    
+    if(!bordaFree){
+        observacaoInput.innerHTML = 'BORDA FREE**';
+        bordaFreeBtn.style.backgroundColor = '#007bff'
+        bordaFree = true;
+    }else{
+        bordaFree = false;
+        bordaFreeBtn.style.backgroundColor = '#024c9b'
+        observacaoInput.innerHTML = ''
+    }
+    
 })
 
 

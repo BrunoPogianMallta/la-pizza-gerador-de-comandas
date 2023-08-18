@@ -503,14 +503,14 @@ function imprimirPedido(tamanho, categoria, sabores, borda, detalhes, horario) {
     const bordaParaImprimir = borda.length > 0 ? borda.map(sabor => capitalizeFirstLetter(sabor)).join(', ') : 'Sem borda';
 
     const pedidoParaImprimir = `
-        <div style="margin:0 auto;text-align:center;border:1px dotted black;max-width:190px;justify-content:center;">
-        <div style="">Tamanho: ${capitalizeFirstLetter(tamanho)}</div>
+        <div style="margin:0 auto;text-align:center;border:dashed 1px black; max-width:190px;justify-content:center;">
+        <div font-weight: bolder;>Tamanho: ${capitalizeFirstLetter(tamanho)}</div>
         <hr>
-        <div style="margin-top:10px;margin-left:-20px >Categoria:</div> ${capitalizeFirstLetter(categoria)}
+        <div style="margin-top:10px;border:dashed 1px black;font-weight: bolder; >Categoria</div> ${capitalizeFirstLetter(categoria)}
         <hr>
-        <div style="margin-top:10px;">Sabores:</div><ul style ="margin-left:10px;list-style-type: none;padding:0;"> <li>${sabores.map(sabor => capitalizeFirstLetter(sabor)).join(',<br> ')}</li></ul>
-        <div style="margin-top:10px;">Borda:</div> ${bordaParaImprimir}
-        <div style="margin-top:10px;margin-left:2px;">Observação:</div> ${detalhes}
+        <div style="margin-top:10px;border:dashed 1px black;font-weight: bolder;">Sabores</div><ul style ="margin-left:10px;list-style-type: none;padding:0;"> <li style="margin-top:10px;">${sabores.map(sabor => capitalizeFirstLetter(sabor)).join('<br> ')}</li></ul>
+        <div style="margin-top:10px;border:dashed 1px black;font-weight: bolder;">Borda</div> ${bordaParaImprimir}
+        <div style="margin-top:10px;margin-left:2px; border:dashed 1px black;">Observação:</div> ${detalhes}
         <hr>
         <div style="margin-top:20px;"> Horário: </div>${horario}
         </div>

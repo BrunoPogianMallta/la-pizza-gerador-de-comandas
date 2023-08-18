@@ -503,32 +503,25 @@ function imprimirPedido(tamanho, categoria, sabores, borda, detalhes, horario) {
     const bordaParaImprimir = borda.length > 0 ? borda.map(sabor => capitalizeFirstLetter(sabor)).join(', ') : 'Sem borda';
 
     const pedidoParaImprimir = `
-        Tamanho: ${capitalizeFirstLetter(tamanho)}
-        Categoria: ${capitalizeFirstLetter(categoria)}
-        Sabores: ${sabores.map(sabor => capitalizeFirstLetter(sabor)).join(', ')}
-        Borda: ${bordaParaImprimir}
-        Observação: ${detalhes}
-        Horário: ${horario}
+        <div style="margin:0 auto;text-align:center;border:1px dotted black;max-width:190px;justify-content:center;">
+        <div style="">Tamanho: ${capitalizeFirstLetter(tamanho)}</div>
+        <hr>
+        <div style="margin-top:10px;margin-left:-20px >Categoria:</div> ${capitalizeFirstLetter(categoria)}
+        <hr>
+        <div style="margin-top:10px;">Sabores:</div><ul style ="margin-left:10px;list-style-type: none;padding:0;"> <li>${sabores.map(sabor => capitalizeFirstLetter(sabor)).join(',<br> ')}</li></ul>
+        <div style="margin-top:10px;">Borda:</div> ${bordaParaImprimir}
+        <div style="margin-top:10px;margin-left:2px;">Observação:</div> ${detalhes}
+        <hr>
+        <div style="margin-top:20px;"> Horário: </div>${horario}
+        </div>
     `;
 
-    // Estilos CSS para o pedido impresso
-    const styles = `
-        <style>
-            body {
-                font-size: 18px; /* Tamanho da fonte */
-                line-height: 1.5; /* Espaçamento entre linhas */
-            }
-            pre {
-                font-family: monospace; /* Usar fonte monospace para manter a formatação */
-            }
-        </style>
-    `;
+    
 
     // Criar uma nova janela para impressão
     const printWindow = window.open('', '_blank');
 
     // Escrever os estilos e o conteúdo do pedido na janela de impressão
-    printWindow.document.write(styles);
     printWindow.document.write(`<pre>${pedidoParaImprimir}</pre>`);
     printWindow.document.close();
 

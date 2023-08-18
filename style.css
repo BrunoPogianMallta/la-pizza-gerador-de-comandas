@@ -317,7 +317,13 @@ body, html {
 
 #sabores-selecionados {
     font-weight: bold;
-    color: green;
+    color:black;
+    margin-top: 10px;
+}
+#sabores-selecionados span{
+    font-weight: bold;
+    color:white;
+    background-color: green;
     margin-top: 10px;
 }
 
@@ -356,6 +362,10 @@ body, html {
     top: 0;
     background-color: #fff;
     z-index: 1;
+}
+
+#pedido-sidebar h2{
+    text-align: center;
 }
 
 
@@ -483,6 +493,7 @@ body, html {
     font-size: 16px;
     cursor: pointer;
     z-index: 9999;
+    display: none;
 }
 
 /* Estilos para a barra lateral do pedido */
@@ -602,8 +613,10 @@ body, html {
 }
 
 
+
+
 /* Responsividade */
-@media (max-width: 628px) {
+@media (max-width: 828px) {
     .container {
         padding: 100px;
 
@@ -654,6 +667,24 @@ body, html {
     }
     .container {
         margin-left: 140px;
+    }
+    #open-pedido-sidebar{
+        right: 50px;
+    }
+    #sabores-borda .action-btn {
+        width: 80px;
+        font-size: small;
+        margin-top: 5px;
+    } 
+
+    .modal-content {
+            width: 200px;
+            margin-left: 120px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
     }
     
     /* Mais estilos responsivos conforme necessário */

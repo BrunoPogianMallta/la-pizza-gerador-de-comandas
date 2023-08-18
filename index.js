@@ -100,7 +100,7 @@ function atualizarInformacoesPedido() {
     console.log(saboresPedidoElement.textContent)
     if(!saboresSelecionados.length > 1){
         for(let sabor in saboresSelecionados){
-            saboresPedidoElement.textContent =+ sabor+'oi'
+            saboresPedidoElement.textContent = sabor
         }
 
         
@@ -136,6 +136,7 @@ function escolherTamanhoDaPizza() {
             tamanhoSelecionado = tamanho;
             popout.style.display = 'block';
             selectSizeModal.style.display = 'none';
+            openPedidoSidebarBtn.style.display = 'block';
 
             const selectedSizeElement = document.getElementById('selected-size');
             selectedSizeElement.textContent = tamanho;
@@ -214,18 +215,10 @@ function selecionarSabor(saborElement, sabor) {
             alert(`Você só pode escolher até ${maxSabores[tamanhoSelecionado]} sabores para um tamanho ${tamanhoSelecionado}.`);
         }
     }
-    // atualizarPedidoSidebar();
-    // atualizarSaboresSelecionados();
-}
-
-// Função para resetar a seleção de sabores
-function resetarSelecaoSabores() {
-    const allItems = document.querySelectorAll('.pizza-list-item');
-    allItems.forEach(item => {
-        item.classList.remove('selected');
-    });
-    saboresSelecionados = [];
-    // atualizarSaboresSelecionados();
+    
+    openPedidoSidebarBtn.style.display = 'block';
+    
+    atualizarSaboresSelecionados();
 }
 
 // Função para atualizar a exibição dos sabores selecionados
@@ -240,6 +233,25 @@ function atualizarSaboresSelecionados() {
     }
 }
 
+
+function removerSaborSelecionado(sabor) {
+    const index = saboresSelecionados.indexOf(sabor);
+    if (index !== -1) {
+        saboresSelecionados.splice(index, 1);
+        atualizarInformacoesPedido();
+        atualizarSaboresSelecionados(); // Atualizar a exibição na barra lateral
+    }
+}
+
+
+// Event listener para os sabores selecionados na barra lateral
+saboresSelecionadosElement.addEventListener('click', function(event) {
+    const saborClicado = event.target.textContent.trim();
+    if (saborClicado.startsWith('1/') && saborClicado.includes(' ')) {
+        const saborRemovido = saborClicado.split(' ').slice(1).join(' ');
+        removerSaborSelecionado(saborRemovido);
+    }
+});
 
 // Função para gerar o pedido e disponibilizar para impressão
 function gerarPedidoParaImpressao(tamanho, categoria, saboresSelecionados, numeroPedido, detalhes) {
@@ -303,6 +315,9 @@ function exibirSaboresBorda() {
             saboresBorda = [sabor]; // Definir apenas um sabor de borda recheada
             atualizarSaboresSelecionados();
             atualizarPedidoSidebar(); // Atualizar a barra lateral do pedido
+            if(saboresBorda){
+                console.log('tem borda')
+            }
 
             bordaModal.style.display = 'none';
         });
@@ -377,6 +392,10 @@ openPedidoSidebarBtn.addEventListener('click', () => {
 
 // Event listener para fechar a barra lateral do pedido
 closePedidoSidebarBtn.addEventListener('click', () => {
+    if(saboresSelecionados.length === 0){
+        openPedidoSidebarBtn.style.display = 'none'
+    }
+    
     pedidoSidebar.style.left = '-500px'; // Feche a barra lateral
 });
 
@@ -449,6 +468,7 @@ salvarPizzaBtn.addEventListener('click', () => {
     } else {
         alert('Por favor, selecione um tamanho e pelo menos um sabor antes de salvar.');
     }
+    console.log('SALVOU')
 });
 
 function atualizarListaPizzasSalvas() {

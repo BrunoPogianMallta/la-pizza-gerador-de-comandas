@@ -42,8 +42,9 @@
         
 
         <div class="popout" id="popout">
+            <h2>Escolha a Categoria</h2>
             <div class="popout-category" id="popout-category">
-                <h2>Escolha a Categoria</h2>
+                
                 <button class="category-btn" id="tradicional">tradicionais</button>
                 <button class="category-btn" id="especial">Especiais</button>
                 <button class="category-btn" id="premium">Premium</button>
@@ -53,7 +54,7 @@
 
             <div class="popout-content" id="popout-gerar-comanda">
                 <h2>Escolha a opção para o tamanho </h2>
-                <span id="selected-size"></span>
+                <!-- <span id="selected-size"></span> -->
                 <ul id="categoria"></ul>
                 <!-- modal para escolher borda -->
                 <div>
@@ -103,6 +104,7 @@
 
     <!-- Borda da Pizza -->
     <p><strong>Borda da Pizza:</strong> <span id="borda-pedido">Sem borda</span></p>
+    <button id="borda-free">Borda Free</button>
         <label for="observacao">Observação:</label>
         <textarea id="observacao" rows="4"></textarea>
         <button id="salvar-pizza-btn" class="action-btn">Salvar Pizza</button>

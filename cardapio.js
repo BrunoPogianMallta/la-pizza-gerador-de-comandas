@@ -41,7 +41,20 @@ export const cardapio = {
         { id: 36, sabor: "paulista" },
         { id: 37, sabor: "quatro queijos" },
         { id: 38, sabor: "portuguesa" },
-        { id: 39, sabor: "palmito c/bacon" }
+        { id: 39, sabor: "palmito c/bacon" },
+        { id: 40, sabor: 'Calabresa com cebola'},
+        { id: 41, sabor: 'Calabresa com catupiry'},
+        { id: 42, sabor: 'Frango cheddar'},
+        { id: 43, sabor: 'Calabresa com cheddar '},
+        { id: 44, sabor: 'Lombo com cheddar'},
+        { id: 45, sabor: 'Lombo catupiry'},
+        { id: 46, sabor: 'Lombo especial '},
+        { id: 47, sabor: 'Bauru '},
+        { id: 48, sabor: 'Baiana '},
+        { id: 49, sabor: '2 queijos'},
+        { id: 50, sabor: 'Calafrango '},
+        { id: 51, sabor: 'Franpalha '},
+        { id: 52, sabor: 'Calabresa com bacon'},
     ],
         premium: [
         { id: 40, sabor: "tomate seco" },
@@ -66,7 +79,17 @@ export const cardapio = {
         { id: 57, sabor: "prestigio" },
         { id: 58, sabor: "brigadeiro" },
         { id: 59, sabor: "romeu e julieta" },
-        { id: 60, sabor: "choconana" }
+        { id: 60, sabor: "choconana" },
+        { id:61, sabor: 'Sensação de morando'} ,
+        { id:62, sabor: 'Sensação uva'},
+        { id:63, sabor: 'Ninho com Nutella'},
+        { id:64, sabor: 'Twix'},
+        { id:65, sabor: 'Laka Oreo' },
+        { id:66, sabor: 'Banana nevada' },
+        { id:67, sabor: 'Confete '},
+        { id:68, sabor: 'Banoff '},
+        { id:69, sabor: 'Paçoquinha'},
+        { id:70, sabor: 'Marshmallow'},
     ]
 }
 };

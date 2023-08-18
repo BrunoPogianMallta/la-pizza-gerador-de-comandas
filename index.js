@@ -1,5 +1,6 @@
 import { cardapio } from './cardapio.js';
 
+//elementos usados para capturar as paradas
 const tamanhoButtons = document.querySelectorAll('.pizza-btn');
 const categoryButtons = document.querySelectorAll('.category-btn');
 const voltarBtn = document.querySelector('.voltar-btn');
@@ -12,12 +13,18 @@ const bordaRecheadaBtn = document.getElementById('borda-recheada-btn');
 const bordaModal = document.getElementById('bordaModal');
 const saboresBordaContainer = document.getElementById('sabores-borda');
 const voltarBordaBtn = document.getElementById('voltar-borda');
-const saboresSelecionadosElement = document.getElementById('sabores-selecionados'); // Elemento para exibir sabores selecionados
+const saboresSelecionadosElement = document.getElementById('sabores-selecionados'); 
 const observacaoInput = document.getElementById('observacao');
+const openPedidoSidebarBtn = document.getElementById('open-pedido-sidebar');
+const closePedidoSidebarBtn = document.getElementById('close-pedido-sidebar');
+const pedidoSidebar = document.getElementById('pedido-sidebar');
+const finalizarPedidoBtn = document.getElementById('finalizar-pedido-btn');
+const categoriaPedidoElement = document.getElementById('categoria-pedido');
+const tamanhoPedidoElement = document.getElementById('tamanho-pedido');
+const bordaFreeBtn = document.getElementById('borda-free');
 
 // Variáveis para rastrear popouts
 let popoutAtual = null;
-let popoutAnterior = null;
 let popoutDefault = selectSizeModal;
 
 // Número máximo de sabores por tamanho
@@ -33,6 +40,9 @@ const maxSabores = {
 let tamanhoSelecionado = '';
 let saboresSelecionados = [];
 let categoriaSelecionada = '';
+
+let pizzaMontada = []
+
 
 // Função para exibir a lista de pizzas de uma categoria
 function exibirListaDePizzas(pizzas, categoria) {
@@ -55,7 +65,7 @@ function exibirListaDePizzas(pizzas, categoria) {
         const numElement = document.createElement('span');
         numElement.classList.add('pizza-list-item-num');
         numElement.textContent = `${pizza.id}`;
-        listItem.appendChild(numElement);
+        // listItem.appendChild(numElement);
 
         // Sabor da pizza
         const saborElement = document.createElement('span');
@@ -91,13 +101,27 @@ function atualizarInformacoesPedido() {
     const saboresPedidoElement = document.getElementById('sabores-pedido');
     const bordaPedidoElement = document.getElementById('borda-pedido');
 
+
+    let pizzaAtual = {
+        tamanho: tamanhoPedidoElement.textContent,
+        categoria: categoriaPedidoElement.textContent,
+        sabores: saboresPedidoElement.textContent,
+        borda: bordaPedidoElement.textContent
+    };
+
+    pizzaMontada = pizzaAtual; // Atualiza a variável pizzaMontada com a pizza atual
+
+    console.log(pizzaMontada)
+
+   
+
     // Atualizar informações sobre o tamanho da pizza
     tamanhoPedidoElement.textContent = capitalizeFirstLetter(tamanhoSelecionado);
 
     // Atualizar informações sobre a categoria da pizza
     categoriaPedidoElement.textContent = capitalizeFirstLetter(categoriaSelecionada);
 
-    console.log(saboresPedidoElement.textContent)
+   
     if(!saboresSelecionados.length > 1){
         for(let sabor in saboresSelecionados){
             saboresPedidoElement.textContent = sabor
@@ -114,7 +138,7 @@ function atualizarInformacoesPedido() {
     } else {
         saboresPedidoElement.textContent = 'Nenhum sabor selecionado.';
     }
-    console.log('atualizei o pedido')
+   
 
     // Atualizar informações sobre a borda da pizza
     if (saboresBorda.length > 0) {
@@ -123,6 +147,8 @@ function atualizarInformacoesPedido() {
     } else {
         bordaPedidoElement.textContent = 'Sem borda';
     }
+
+    
 }
 
 
@@ -137,9 +163,6 @@ function escolherTamanhoDaPizza() {
             popout.style.display = 'block';
             selectSizeModal.style.display = 'none';
             openPedidoSidebarBtn.style.display = 'block';
-
-            const selectedSizeElement = document.getElementById('selected-size');
-            selectedSizeElement.textContent = tamanho;
 
             popoutAtual = popout;
             atualizarSaboresSelecionados();
@@ -173,7 +196,6 @@ categoryButtons.forEach(button => {
 
 // Event listener para o botão de voltar
 voltarBtn.addEventListener('click', function() {
-    console.log('botao voltar',saboresSelecionados)
     if (popoutAtual) {
         popoutAtual.style.display = 'none';
         popoutDefault.style.display = 'block';
@@ -182,7 +204,6 @@ voltarBtn.addEventListener('click', function() {
 
 // Event listener para o botão de voltar (segunda tela)
 voltarBugado.addEventListener('click', function() {
-    console.log('botao voltarBugado',saboresSelecionados)
     popoutGeraComanda.style.display = 'none';
     popoutCategory.style.display = 'block';
     // saboresSelecionados = [];
@@ -251,6 +272,9 @@ saboresSelecionadosElement.addEventListener('click', function(event) {
         const saborRemovido = saborClicado.split(' ').slice(1).join(' ');
         removerSaborSelecionado(saborRemovido);
     }
+    
+    // Chamada à função atualizarSaboresSelecionadosDebounced em vez de atualizarSaboresSelecionados
+    atualizarSaboresSelecionadosDebounced();
 });
 
 // Função para gerar o pedido e disponibilizar para impressão
@@ -315,10 +339,6 @@ function exibirSaboresBorda() {
             saboresBorda = [sabor]; // Definir apenas um sabor de borda recheada
             atualizarSaboresSelecionados();
             atualizarPedidoSidebar(); // Atualizar a barra lateral do pedido
-            if(saboresBorda){
-                console.log('tem borda')
-            }
-
             bordaModal.style.display = 'none';
         });
 
@@ -355,7 +375,7 @@ bordaRecheadaBtn.addEventListener('click', () => {
 // Event listener para o botão de "Voltar Borda"
 voltarBordaBtn.addEventListener('click', () => {
     bordaModal.style.display = 'none';
-    console.log('botao voltar',saboresSelecionados)
+   
 });
 
 
@@ -363,12 +383,7 @@ voltarBordaBtn.addEventListener('click', () => {
 // Estrutura de dados para armazenar as pizzas do pedido
 const pedido = [];
 
-const openPedidoSidebarBtn = document.getElementById('open-pedido-sidebar');
-const closePedidoSidebarBtn = document.getElementById('close-pedido-sidebar');
-const pedidoSidebar = document.getElementById('pedido-sidebar');
-const finalizarPedidoBtn = document.getElementById('finalizar-pedido-btn');
-const categoriaPedidoElement = document.getElementById('categoria-pedido');
-const tamanhoPedidoElement = document.getElementById('tamanho-pedido');
+
 
 categoryButtons.forEach(button => {
     button.addEventListener('click', function() {
@@ -468,7 +483,18 @@ salvarPizzaBtn.addEventListener('click', () => {
     } else {
         alert('Por favor, selecione um tamanho e pelo menos um sabor antes de salvar.');
     }
-    console.log('SALVOU')
+  
+
+    const pizzaAtual = {
+        tamanho: tamanhoSelecionado,
+        categoria: categoriaSelecionada,
+        sabores: saboresSelecionados,
+        borda: saboresBorda,
+        detalhes: detalhesDoPedido,
+        horario: horarioAtual
+    };
+    pizzaMontada.push(pizzaAtual);
+    console.log('pizza montata',pizzaMontada)
 });
 
 function atualizarListaPizzasSalvas() {
@@ -546,13 +572,11 @@ function imprimirPedido(tamanho, categoria, sabores, borda, detalhes, horario) {
         </div>
     `;
 
-    
-
     // Criar uma nova janela para impressão
     const printWindow = window.open('', '_blank');
 
-    // Escrever os estilos e o conteúdo do pedido na janela de impressão
-    printWindow.document.write(`<pre>${pedidoParaImprimir}</pre>`);
+    // Escrever o conteúdo do pedido na janela de impressão
+    printWindow.document.write(pedidoParaImprimir);
     printWindow.document.close();
 
     // Iniciar o processo de impressão
@@ -579,7 +603,20 @@ function adicionarPizzaAoPedido(tamanho, categoria, sabores, borda, detalhes, ho
         horario: horario
     });
     atualizarListaPizzasSalvas();
+    return {
+        tamanho: tamanho,
+        categoria: categoria,
+        sabores: sabores,
+        borda: borda,
+        detalhes: detalhes,
+        horario: horario 
+    }
 }
+
+//adicionar borda free
+bordaFreeBtn.addEventListener('click',()=>{
+    observacaoInput.innerHTML = 'BORDA FREE**'
+})
 
 
 // Iniciar a escolha do tamanho da pizza

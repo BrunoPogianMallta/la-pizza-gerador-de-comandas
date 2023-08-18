@@ -277,7 +277,8 @@ body, html {
 
 .pizza-list-item-sabor {
     flex-grow: 1;
-    margin-left: 10px;
+    /* margin-left: 10px; */
+    padding: 10px;
 }
 
 .num-sabor-header {
@@ -318,7 +319,7 @@ body, html {
 #sabores-selecionados {
     font-weight: bold;
     color:black;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 #sabores-selecionados span{
     font-weight: bold;
@@ -354,7 +355,7 @@ body, html {
 }
 
 .pizza-list-item.selected .pizza-list-item-sabor {
-    background-color: lightgreen;
+   border: green;
 }
 
 .pizza-category-header {
@@ -366,6 +367,19 @@ body, html {
 
 #pedido-sidebar h2{
     text-align: center;
+}
+
+.pizza-list-item-sabor:hover{
+    background-color: #007bff;
+    color: white;
+}
+
+#sabores-borda  .sabor-borda-btn:hover{
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    /* border-radius: 5px; */
+    transition:cubic-bezier(0.445, 0.05, 0.55, 0.95) ;
 }
 
 
@@ -456,13 +470,16 @@ body, html {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-
+    border-radius: 5px;
 }
 
 .borda-recheada-btn:hover {
     background-color: #0056b3;
 }
 
+.pizza-category-header{
+    margin-bottom: 100px;
+}
 .pedido-sidebar {
     position: fixed;
     top: 0;
@@ -494,12 +511,13 @@ body, html {
     cursor: pointer;
     z-index: 9999;
     display: none;
+    transition: background-color 0.3s ease-in-out;
 }
 
 /* Estilos para a barra lateral do pedido */
 #pedido-sidebar {
     position: fixed;
-    top: 0;
+    top: calc(20% - 97px); 
     right: -300px;
     width: 300px;
     height: 100%;
@@ -549,18 +567,16 @@ body, html {
 /* Estilo para o botão "Ver Pedido" */
 #open-pedido-sidebar {
     position: fixed;
-    bottom: 20px;
+    top: 20px;
     right: 20px;
-    background-color: #007bff;
+    background-color: #333;
     color: #fff;
     border: none;
-    padding: 8px 12px;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    z-index: 1000;
-    font-size: 14px;
-    height: 50px;
-    line-height: 1;
+    z-index: 9999;
+    display: block; 
 }
 
 #open-pedido-sidebar:hover {
@@ -571,10 +587,7 @@ body, html {
     background-color: #007bff;
     color: #fff;
     border: none;
-    /* padding: 0 12px; Ajuste o padding para controlar a altura */
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    /* align-self: flex-end; */
     text-align: center;
     font-size: 14px;
 }
@@ -584,10 +597,8 @@ body, html {
     background-color: #0ece0e;
     color: #fff;
     border: none;
-    /* padding: 0 12px; Ajuste o padding para controlar a altura */
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
-    /* align-self: flex-end; */
     text-align: center;
     font-size: 14px;
     margin-bottom: 10px;
@@ -605,14 +616,11 @@ body, html {
     border: none;
     padding: 8px 12px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
     z-index: 1000;
     font-size: 14px;
     height: 50px;
     line-height: 1;
 }
-
-
 
 
 /* Responsividade */
@@ -687,5 +695,11 @@ body, html {
             text-align: center;
     }
     
-    /* Mais estilos responsivos conforme necessário */
+}
+
+
+#popout-category h2 {
+text-align: center;
+margin-bottom: 100px;
+margin-left: 300px;
 }

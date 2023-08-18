@@ -1,7 +1,5 @@
-// Importar o objeto 'cardapio' do arquivo 'cardapio.js'
 import { cardapio } from './cardapio.js';
 
-// Selecionar os elementos relevantes do HTML
 const tamanhoButtons = document.querySelectorAll('.pizza-btn');
 const categoryButtons = document.querySelectorAll('.category-btn');
 const voltarBtn = document.querySelector('.voltar-btn');
@@ -29,6 +27,7 @@ const maxSabores = {
     grande: 2,
     big: 3
 };
+
 
 // Variáveis para rastrear seleções do usuário
 let tamanhoSelecionado = '';
@@ -98,6 +97,15 @@ function atualizarInformacoesPedido() {
     // Atualizar informações sobre a categoria da pizza
     categoriaPedidoElement.textContent = capitalizeFirstLetter(categoriaSelecionada);
 
+    console.log(saboresPedidoElement.textContent)
+    if(!saboresSelecionados.length > 1){
+        for(let sabor in saboresSelecionados){
+            saboresPedidoElement.textContent =+ sabor+'oi'
+        }
+
+        
+    }
+
     // Atualizar informações sobre os sabores da pizza
     if (saboresSelecionados.length > 0) {
         const proporcao = `1/${maxSabores[tamanhoSelecionado]}`;
@@ -106,6 +114,7 @@ function atualizarInformacoesPedido() {
     } else {
         saboresPedidoElement.textContent = 'Nenhum sabor selecionado.';
     }
+    console.log('atualizei o pedido')
 
     // Atualizar informações sobre a borda da pizza
     if (saboresBorda.length > 0) {
@@ -154,7 +163,7 @@ categoryButtons.forEach(button => {
         categoriaSelecionada = button.id;
         const pizzas = cardapio.categorias[categoriaSelecionada];
         exibirListaDePizzas(pizzas, capitalizeFirstLetter(categoriaSelecionada));
-        resetarSelecaoSabores();
+        // resetarSelecaoSabores();
 
         categoriaPedidoElement.textContent = capitalizeFirstLetter(categoriaSelecionada);
         atualizarPedidoSidebar(); // Atualiza em tempo real ao selecionar uma categoria
@@ -163,6 +172,7 @@ categoryButtons.forEach(button => {
 
 // Event listener para o botão de voltar
 voltarBtn.addEventListener('click', function() {
+    console.log('botao voltar',saboresSelecionados)
     if (popoutAtual) {
         popoutAtual.style.display = 'none';
         popoutDefault.style.display = 'block';
@@ -171,12 +181,13 @@ voltarBtn.addEventListener('click', function() {
 
 // Event listener para o botão de voltar (segunda tela)
 voltarBugado.addEventListener('click', function() {
+    console.log('botao voltarBugado',saboresSelecionados)
     popoutGeraComanda.style.display = 'none';
     popoutCategory.style.display = 'block';
-    saboresSelecionados = [];
-    atualizarSaboresSelecionados();
-    resetarSelecaoSabores();
-    categoriaSelecionada = '';
+    // saboresSelecionados = [];
+    // atualizarSaboresSelecionados();
+    // resetarSelecaoSabores();
+    // categoriaSelecionada = '';
 });
 
 // Função para selecionar um sabor
@@ -203,8 +214,8 @@ function selecionarSabor(saborElement, sabor) {
             alert(`Você só pode escolher até ${maxSabores[tamanhoSelecionado]} sabores para um tamanho ${tamanhoSelecionado}.`);
         }
     }
-    atualizarPedidoSidebar();
-    atualizarSaboresSelecionados();
+    // atualizarPedidoSidebar();
+    // atualizarSaboresSelecionados();
 }
 
 // Função para resetar a seleção de sabores
@@ -214,7 +225,7 @@ function resetarSelecaoSabores() {
         item.classList.remove('selected');
     });
     saboresSelecionados = [];
-    atualizarSaboresSelecionados();
+    // atualizarSaboresSelecionados();
 }
 
 // Função para atualizar a exibição dos sabores selecionados
@@ -329,6 +340,7 @@ bordaRecheadaBtn.addEventListener('click', () => {
 // Event listener para o botão de "Voltar Borda"
 voltarBordaBtn.addEventListener('click', () => {
     bordaModal.style.display = 'none';
+    console.log('botao voltar',saboresSelecionados)
 });
 
 
@@ -350,7 +362,7 @@ categoryButtons.forEach(button => {
         categoriaSelecionada = button.id;
         const pizzas = cardapio.categorias[categoriaSelecionada];
         exibirListaDePizzas(pizzas, capitalizeFirstLetter(categoriaSelecionada));
-        resetarSelecaoSabores();
+        // resetarSelecaoSabores();
 
         // Atualizar a categoria na barra lateral
         categoriaPedidoElement.textContent = capitalizeFirstLetter(categoriaSelecionada);
@@ -365,7 +377,7 @@ openPedidoSidebarBtn.addEventListener('click', () => {
 
 // Event listener para fechar a barra lateral do pedido
 closePedidoSidebarBtn.addEventListener('click', () => {
-    pedidoSidebar.style.left = '-300px'; // Feche a barra lateral
+    pedidoSidebar.style.left = '-500px'; // Feche a barra lateral
 });
 
 
@@ -374,7 +386,7 @@ function atualizarPedidoSidebar() {
     const itensPedidoElement = document.getElementById('itens-pedido');
     const bordaPedidoElement = document.getElementById('borda-pedido'); // Elemento da borda recheada
 
-    itensPedidoElement.innerHTML = ''; // Limpa os itens anteriores
+    // itensPedidoElement.innerHTML = ''; // Limpa os itens anteriores
 
     if (tamanhoSelecionado && saboresSelecionados.length > 0) {
         const tamanhoPedido = capitalizeFirstLetter(tamanhoSelecionado);
@@ -391,8 +403,6 @@ function atualizarPedidoSidebar() {
         } else {
             bordaPedidoElement.textContent = 'Sem borda';
         }
-
-        // Adicione mais informações do pedido conforme necessário
     }
 }
 
@@ -400,7 +410,7 @@ function atualizarPedidoSidebar() {
 //evento para finalizar o pedido
 finalizarPedidoBtn.addEventListener('click', () => {
     const detalhesDoPedido = observacaoInput.value || 'Sem detalhes';
-    adicionarPizzaAoPedido(tamanhoSelecionado, categoriaSelecionada, saboresSelecionados, saboresBorda, detalhesDoPedido, horarioAtual);
+    adicionarPizzaAoPedido(tamanhoSelecionado, categoriaSelecionada, saboresSelecionados, saboresBorda, detalhesDoPedido);
 
     // Obter o pedido mais recente
     const pedidoMaisRecente = pedido[pedido.length - 1];

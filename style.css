@@ -78,15 +78,15 @@ body, html {
 }
 
 #popout {
-    width: 100%;
-    max-width: 1200px;
+    /* width: 100%; */
+    /* max-width: 400px; */
     padding: 0 20px;
     box-sizing: border-box;
     text-align: center;
     padding: 40px;
     border-radius: 10px;
     background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     display: none;
 }
 
@@ -358,6 +358,9 @@ body, html {
     z-index: 1;
 }
 
+
+
+
 /* Responsividade */
 @media (max-width: 768px) {
     .pizza-btn {
@@ -583,4 +586,75 @@ body, html {
 #pizzas-salvas{
     display: none;
     visibility: hidden;
+}
+
+#close-pedido-sidebar {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    z-index: 1000;
+    font-size: 14px;
+    height: 50px;
+    line-height: 1;
+}
+
+
+/* Responsividade */
+@media (max-width: 628px) {
+    .container {
+        padding: 100px;
+
+    }
+
+    #pizzas-tamanho {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .pizza-btn {
+        padding: 10px;
+    }
+
+    .popout {
+        padding: 20px;
+    }
+
+    .popout-category {
+        gap: 10px;
+    }
+    .pedido-sidebar{
+        max-width: 200px;
+    }
+    .popout-gerar-comanda{
+        margin-left: 200px;
+    }
+
+    .voltar-btn,
+    .confirmar-btn {
+        width: 100%;
+        max-width: 200px;
+        margin-top: 10px;
+    }
+
+    .sabores-selecionados-container {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .sabor-selecionado {
+        margin-bottom: 5px;
+    }
+    .popout-gerar-comanda {
+        margin-left: 100px;
+    }
+    .container {
+        margin-left: 140px;
+    }
+    
+    /* Mais estilos responsivos conforme necessário */
 }

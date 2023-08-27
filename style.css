@@ -641,11 +641,35 @@ body, html {
 }
 
 #borda-free{
+    width: 100px;
+    display: flex;
     cursor: pointer;
     background-color: #024c9b;
     color: #fff;
     border: none;
     border-radius: 6px;
+    padding: 5px;
+    justify-content: center;
+}
+
+#broto-porteiro{
+    width: 100px;
+    display: flex;
+    cursor: pointer;
+    margin-top: 5px;
+    background-color: #024c9b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 5px;
+    justify-content: center;
+}
+
+#adicionais{
+    align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
 }
 
 

@@ -22,6 +22,7 @@ const finalizarPedidoBtn = document.getElementById('finalizar-pedido-btn');
 const categoriaPedidoElement = document.getElementById('categoria-pedido');
 const tamanhoPedidoElement = document.getElementById('tamanho-pedido');
 const bordaFreeBtn = document.getElementById('borda-free');
+const brotoFreeBtn = document.getElementById('broto-porteiro');
 
 // Variáveis para rastrear popouts
 let popoutAtual = null;
@@ -490,11 +491,12 @@ salvarPizzaBtn.addEventListener('click', () => {
         categoria: categoriaSelecionada,
         sabores: saboresSelecionados,
         borda: saboresBorda,
-        detalhes: detalhesDoPedido,
+        // detalhes: detalhesDoPedido,
         horario: horarioAtual
     };
     pizzaMontada.push(pizzaAtual);
     console.log('pizza montata',pizzaMontada)
+    console.log(pedidoSidebar)
 });
 
 function atualizarListaPizzasSalvas() {
@@ -612,21 +614,46 @@ function adicionarPizzaAoPedido(tamanho, categoria, sabores, borda, detalhes, ho
         horario: horario 
     }
 }
+let brotoPorteiro = false;
 let bordaFree = false;
-//adicionar borda free
-bordaFreeBtn.addEventListener('click',()=>{
-    
-    if(!bordaFree){
-        observacaoInput.innerHTML = 'BORDA FREE**';
-        bordaFreeBtn.style.backgroundColor = '#007bff'
-        bordaFree = true;
-    }else{
-        bordaFree = false;
-        bordaFreeBtn.style.backgroundColor = '#024c9b'
-        observacaoInput.innerHTML = ''
+
+// Função para adicionar um item ao campo de observação
+function adicionarAoCampoObservacao(texto) {
+    if (observacaoInput.value === '') {
+        observacaoInput.value = texto
+    } else {
+        observacaoInput.value += '\n' + texto;
     }
-    
-})
+}
+
+brotoFreeBtn.addEventListener('click', () => {
+    if (!brotoPorteiro) {
+        adicionarAoCampoObservacao('BROTO CORTESIA**');
+        brotoFreeBtn.style.backgroundColor = '#007bff';
+        brotoPorteiro = true;
+    } else {
+        // Se o botão já estava ativado, remova completamente o texto
+        observacaoInput.value = observacaoInput.value.replace('BROTO CORTESIA**', '');
+        brotoFreeBtn.style.backgroundColor = '#024c9b';
+        brotoPorteiro = false;
+    }
+});
+
+// Adicionar borda free
+bordaFreeBtn.addEventListener('click', () => {
+    if (!bordaFree) {
+        adicionarAoCampoObservacao('BORDA FREE**');
+        bordaFreeBtn.style.backgroundColor = '#007bff';
+        bordaFree = true;
+    } else {
+        // Se o botão já estava ativado, remova completamente o texto
+        observacaoInput.value = observacaoInput.value.replace('BORDA FREE**', '');
+        brotoFreeBtn.style.backgroundColor = '#024c9b';
+        bordaFree = false;
+    }
+});
+
+
 
 
 // Iniciar a escolha do tamanho da pizza

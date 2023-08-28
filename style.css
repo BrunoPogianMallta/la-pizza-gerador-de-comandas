@@ -458,7 +458,7 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0btn.5);
     justify-content: center;
     align-items: center;
     z-index: 999;
@@ -474,13 +474,15 @@ body, html {
 
 /* Estilo para os botões de sabores de borda recheada */
 .borda-recheada-btn {
-    background-color: #024c9b;
-    color: #000000;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    width: 100px;
+    display: flex;
     cursor: pointer;
-    border-radius: 5px;
+    background-color: #024c9b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 5px;
+    justify-content: center;
 }
 
 .borda-recheada-btn:hover {
@@ -560,6 +562,7 @@ body, html {
     padding: 5px;
     box-sizing: border-box;
     margin-bottom: 10px;
+    border-radius: 4px;
 }
 
 /* Alinhar a descrição do campo */
@@ -748,11 +751,31 @@ body, html {
             text-align: center;
     }
     
+    
 }
-
+#aba-pedido-completo{
+    position: fixed;
+    top: calc(20% - 99px);
+    right: 100px;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Ajuste a sombra para a direita */
+    padding: 20px;
+    transition: left 0.3s ease-in-out; /* Ajuste a transição para a esquerda */
+    z-index: 9999;
+    display: none;
+}
 
 #popout-category h2 {
 text-align: center;
 margin-bottom: 100px;
 margin-left: 300px;
+}
+
+#adicionais button {
+    max-width: 90px;
+    padding: 5px;
+    height: 40px;
+    align-items: center;
 }

@@ -57,10 +57,10 @@
                 <!-- <span id="selected-size"></span> -->
                 <ul id="categoria"></ul>
                 <!-- modal para escolher borda -->
-                <div>
-                    <button id="borda-recheada-btn" class="action-btn borda-recheada-btn">Borda Recheada</button>
-                    <p id="sabores-selecionados"><span></span></p>
-                </div>
+                    <div>
+                        
+                        <p id="sabores-selecionados"><span></span></p>
+                    </div>
                 <div class="botoes-container">
             
                     <button id="voltar-bugado" class="action-btn voltar-btn"> <img src="./voltar.png" ></button>
@@ -82,16 +82,20 @@
             
         </div>
         
+        <div id="aba-pedido-completo">
+            <div><h2>Pedido Atual</h2></div>
+        </div>
         
     </div>
     <div id="pizzas-salvas"></div>
+
     <div id="pedido-sidebar" class="pedido-sidebar">
         <button id="close-pedido-sidebar">Fechar</button>
-        <h2>Pedido</h2>
+        <h2>Montar Pizza</h2>
         <ul id="itens-pedido"></ul>
         <div id="categoria-container"></div>
         <!-- Número do Pedido -->
-    <p><strong>Número do Pedido:</strong> <span id="numero-pedido">1</span></p>
+    <!-- <p><strong>Número do Pedido:</strong> <span id="numero-pedido">1</span></p> -->
 
     <!-- Tamanho da Pizza -->
     <p><strong>Tamanho da Pizza:</strong> <span id="tamanho-pedido">-</span></p>
@@ -107,6 +111,7 @@
     <div id="adicionais">
         <button id="borda-free">Borda Free</button>
         <button id="broto-porteiro">Broto Porteiro</button>
+        <button id="borda-recheada-btn" class="action-btn borda-recheada-btn">Borda Recheada</button>
     </div>
         <label for="observacao">Observação:</label>
         <textarea id="observacao" rows="4"></textarea>

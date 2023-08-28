@@ -248,7 +248,7 @@ function atualizarSaboresSelecionados() {
     const proporcao = `1/${maxSabores[tamanhoSelecionado]}`;
 
     if (saboresSelecionados.length > 0) {
-        const saboresTexto = saboresSelecionados.map(sabor => `<span class="sabor-selecionado">${proporcao} ${sabor}</span>`).join(', ');
+        const saboresTexto = saboresSelecionados.map(sabor => `<span class="sabor-selecionado">${proporcao} ${sabor}</span>`);
         saboresSelecionadosElement.innerHTML = `Sabores Selecionados: ${saboresTexto}`;
     } else {
         saboresSelecionadosElement.innerHTML = 'Nenhum sabor selecionado.';
@@ -307,16 +307,16 @@ Horário do Pedido: ${horarioAtual}
 
 Detalhes: ${detalhes}
 
-Obrigado por escolher a nossa pizzaria!`;
+Bom trabalho, faça tudo com amor.`;
 
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(new Blob([conteudo], { type: 'text/plain' }));
-    link.download = 'pedido.txt';
-    link.textContent = 'Clique aqui para baixar o arquivo de pedido';
+    // const link = document.createElement('a');
+    // link.href = URL.createObjectURL(new Blob([conteudo], { type: 'text/plain' }));
+    // link.download = 'pedido.txt';
+    // link.textContent = 'Clique aqui para baixar o arquivo de pedido';
 
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // document.body.appendChild(link);
+    // link.click();
+    // document.body.removeChild(link);
 }
 
 // Função auxiliar para capitalizar a primeira letra de uma string
@@ -619,11 +619,13 @@ let bordaFree = false;
 
 // Função para adicionar um item ao campo de observação
 function adicionarAoCampoObservacao(texto) {
-    if (observacaoInput.value === '') {
-        observacaoInput.value = texto
+    const observacao = observacaoInput.value;
+    if (observacao === '' || observacao.endsWith('\n')) {
+        observacaoInput.value += texto;
     } else {
         observacaoInput.value += '\n' + texto;
     }
+    console.log(observacaoInput.value);
 }
 
 brotoFreeBtn.addEventListener('click', () => {
@@ -648,10 +650,15 @@ bordaFreeBtn.addEventListener('click', () => {
     } else {
         // Se o botão já estava ativado, remova completamente o texto
         observacaoInput.value = observacaoInput.value.replace('BORDA FREE**', '');
-        brotoFreeBtn.style.backgroundColor = '#024c9b';
+        bordaFreeBtn.style.backgroundColor = '#024c9b';
         bordaFree = false;
     }
+
+    if (observacaoInput.value === '') {
+        console.log('vazio');
+    }
 });
+
 
 
 
